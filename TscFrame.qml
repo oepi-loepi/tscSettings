@@ -109,5 +109,26 @@ Widget {
 			}
 		}
 
+
+		StandardButton {
+			id: restartGuiButton
+
+			text: qsTr("Restart GUI")
+
+			height: 40 
+
+			anchors {
+				left: parent.left
+				top: hideToonLogoLabel.bottom
+				topMargin: Math.round(30 * 1.25)
+			}
+
+			topClickMargin: 2
+			onClicked: {
+				Qt.quit();	
+			}
+		}
+
+
 	}
 }
