@@ -27,9 +27,18 @@ Widget {
 		}
 	}
 
+        function updateCustomToonLogo() {
+                switch(globals.tsc["customToonLogo"]) {
+                        case 0: customToonLogoLabel.rightText = "Disabled"; break;
+                        case 1: customToonLogoLabel.rightText = "Enabled"; break;
+                        default: customToonLogoLabel.rightText = "unknown"; break;
+                }
+        }
+
 	onShown: {
 		updateRotateTiles();
 		updateHideToonLogo();
+                updateCustomToonLogo();
 	}
 
 	anchors.fill: parent
@@ -109,6 +118,39 @@ Widget {
 			}
 		}
 
+                SingleLabel {
+                        id: customToonLogoLabel
+                        anchors {
+                                top: hideToonLogoButton.bottom
+                                topMargin: Math.round(30 * 1.25)
+                                left: parent.left
+                                right: hideToonLogoButton.left
+                                rightMargin: 8
+                        }
+                        leftText: qsTr("Custom Toon logo")
+                        rightText: ""
+
+                }
+
+                IconButton {
+                        id: customToonLogoButton
+
+                        width: 45
+                        height: customToonLogoLabel.height
+
+                        iconSource: "qrc:/images/edit.svg"
+
+                        anchors {
+                                top: customToonLogoLabel.top
+                                right: parent.right
+                        }
+
+                        topClickMargin: 3
+                        onClicked: {
+                                stage.openFullscreen(app.customToonLogoScreenUrl);
+                        }
+                }
+
 
 		StandardButton {
 			id: restartGuiButton
@@ -119,7 +161,7 @@ Widget {
 
 			anchors {
 				left: parent.left
-				top: hideToonLogoLabel.bottom
+				top: customToonLogoLabel.bottom
 				topMargin: Math.round(30 * 1.25)
 			}
 

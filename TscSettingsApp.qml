@@ -10,11 +10,13 @@ App {
 	property url tscFrameUrl: "TscFrame.qml"
 	property url rotateTilesScreenUrl: "RotateTilesScreen.qml"
 	property url hideToonLogoScreenUrl: "HideToonLogoScreen.qml"
+	property url customToonLogoScreenUrl: "CustomToonLogoScreen.qml"
 
 	function init() {
 		registry.registerWidget("settingsFrame", tscFrameUrl, this, "tscFrame", {categoryName: "TSC", categoryWeight: 310});
 		registry.registerWidget("screen", rotateTilesScreenUrl, this, null, {lazyLoadScreen: true});
 		registry.registerWidget("screen", hideToonLogoScreenUrl, this, null, {lazyLoadScreen: true});
+		registry.registerWidget("screen", customToonLogoScreenUrl, this, null, {lazyLoadScreen: true});
 
 	}
 
